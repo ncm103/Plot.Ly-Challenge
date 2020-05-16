@@ -1,8 +1,8 @@
 function buildInformation(x_data) {
     d3.json("samples.json").then((data)=>{
     var hold_information = data.metadata;
-    var array1 = hold_information.filter(sampleObj=>sampleObj.id==x_data)
-    var results = array1[0]
+    var array1 = hold_information.filter(sampleObj=>sampleObj.id==x_data);
+    var results = array1[0];
     var metadata_panel = d3.select("#sample-metadata");
     metadata_panel.html("");
     Object.entries(results).forEach(([key, value]) => {
@@ -13,19 +13,19 @@ function buildInformation(x_data) {
     }
 
 function buildCharts(sample) {
-    d3.json("samples.json").then((data)=>{s
+    d3.json("samples.json").then((data)=>{
     var grabSamples = data.samples;
-    var grabArray = grabSamples.filter(sampleObj=>sampleObj.id==sample)
-    var results = grabArray[0]
-    var sample_values = results.sample_values
-    var otu_ids = results.otu_ids
-    var otu_labels = results.otu_labels
+    var grabArray = grabSamples.filter(sampleObj=>sampleObj.id==sample);
+    var results = grabArray[0];
+    var sample_values = results.sample_values;
+    var otu_ids = results.otu_ids;
+    var otu_labels = results.otu_labels;
     var bubbleLayout = {
         title:"Bubble Chart",
         margin:{t:0},
         hovermode:"closest",
         xaxis:{title:"Xaxis Title"},
-        margin:{t:30},
+        margin:{t:30}
 
     };
     var circlesData = [
@@ -62,11 +62,6 @@ function buildCharts(sample) {
     Plotly.newPlot("bar",barsData, chartLayout);
     });
 }
-
-
-
-
-
 function initializeFunction(){
     var selectReference = d3.select("#selDataset");
     d3.json("samples.json").then((data)=>{
