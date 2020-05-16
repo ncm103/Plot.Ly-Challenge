@@ -67,7 +67,7 @@ function initializeFunction(){
     d3.json("samples.json").then((data)=>{
     var namesList = data.names
     namesList.forEach((samples) => {
-        selectReference.append("options").text(samples).property("value", samples);
+        selectReference.append("option").text(samples).property("value", samples);
     });
     var sampleCall = namesList[0];
     buildCharts(sampleCall);
@@ -75,7 +75,7 @@ function initializeFunction(){
     
     });
 }
-function changeValues(x) {
+function optionChanged(x) {
     buildInformation(x);
     buildCharts(x);
 }
